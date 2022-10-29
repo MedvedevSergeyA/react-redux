@@ -11,8 +11,8 @@ const todosService = {
         })
         return data
     },
-    create: async () => {
-        const {data} = await httpService.post(todosEndPoint)
+    create: async (payload) => {
+        const {data} = await httpService.post(todosEndPoint, payload)
         return data
     }
 }

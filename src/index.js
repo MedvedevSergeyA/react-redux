@@ -32,8 +32,8 @@ const App = (params) => {
     const deleteTask = (taskId) => {
         dispatch(taskDeleted(taskId))
     }
-    const addTask = (title) => {
-        dispatch(createTask(title))
+    const addTask = (task) => {
+        dispatch(createTask(task))
     }
     if(loading) {
         return <h1>Loading...</h1>
@@ -43,7 +43,6 @@ const App = (params) => {
     }
     return (<>
             <h1>App</h1>
-
             <ul>
                 {state.map(el =>
                     <li key={el.id}>
@@ -52,10 +51,10 @@ const App = (params) => {
                         <button onClick={() => dispatch(completedTask(el.id))}>Complete</button>
                         <button onClick={() => changeTitle(el.id)}>ChangeTitle</button>
                         <button onClick={() => deleteTask(el.id)}>DeleteTask</button>
-                        <button onClick={() => addTask(el.title)}>Create</button>
                         <hr/>
                     </li>
                 )}
+                <button onClick={() => addTask({id: 10, title: "новая задача", completed: false})}>Create</button>
             </ul>
         </>
     )
